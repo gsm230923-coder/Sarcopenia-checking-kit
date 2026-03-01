@@ -8,7 +8,7 @@ score = 0
 gender = st.radio("성별을 선택하세요", ["남", "여"])
 
 # 악력
-grip = st.number_input("악력 (kg)", min_value=0.0)
+grip = st.number_input("악력 (kg)", min_value=0, step=1)
 
 if gender == "남":
     if grip >= 28:
@@ -26,8 +26,10 @@ else:
         score += 2
 
 # 보행 시간
-time = st.number_input("6m 걷는 시간 (초)", min_value=0.1)
-speed = 6 / time
+time = st.number_input("6m 걷는 시간 (초)", min_value=1, step=1, format="%d")
+
+#내부에서만 속력 계산
+speed = 6 / float(time)
 
 if speed >= 1.0:
     score += 0
@@ -82,3 +84,4 @@ if st.button("결과 확인"):
         st.error("근감소증 의심군입니다.")
     else:
         st.success("정상 범위입니다.")
+
