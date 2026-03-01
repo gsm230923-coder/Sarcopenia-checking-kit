@@ -82,5 +82,3 @@ if st.button("결과 확인"):
         st.error("근감소증 의심군입니다.")
     else:
         st.success("정상 범위입니다.")
-
-streamlit run app.py
